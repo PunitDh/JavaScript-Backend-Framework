@@ -3,15 +3,53 @@ class Model {
 
   }
 
+  first () {
+
+  }
+
+  last () {
+
+  }
+
+  second() {
+
+  }
+
+  third() {
+
+  }
+
+  fourth() {
+
+  }
+
+  fifth() {}
+
+  sixth() {}
+
+  seventh() {}
+
+  eighth() {}
+
+  ninth() {}
+
+  tenth() {}
+
+
+
   all() {
 
   }
 
-  find_by() {
+  find_by(query) {
 
   }
 
-  find() {
+  find(query) {
+
+  }
+
+  where(query){
 
   }
 

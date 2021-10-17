@@ -8,9 +8,7 @@ class Pages extends Controller {
     }
   }
 
-  about() {
-    
-  }
+  about() {}
 }
 
 module.exports = Pages;

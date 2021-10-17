@@ -7,4 +7,4 @@ function Routes() {
   GET("/about", "pages#about")
 }
 
-module.exports = Routes
+module.exports = Routes;
