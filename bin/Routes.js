@@ -16,7 +16,7 @@ function GET(route, to) {
 
   router.get(route, (req, res) => {
     const request_time = new Date();
-    console.log("Started", `\"${route}\"`, "at", (new Date()).toLocaleString('en-AU'));
+    console.log("Started GET", `\"${route}\"`, "at", request_time.toLocaleString('en-AU'));
     const file_exists = fs.existsSync(`./app/views/${cont}/${function_name}.html`);
     if(file_exists) {
       res.status(200).render(`../app/views/${cont}/${function_name}`, func())
