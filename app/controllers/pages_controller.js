@@ -1,4 +1,4 @@
-const { Controller } = require("../bin/Controller")
+const { Controller } = require("../../bin/Controller")
 
 class Pages extends Controller {
   

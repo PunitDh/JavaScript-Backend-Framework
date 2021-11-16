@@ -1,34 +1,33 @@
 const router = require("express").Router();
-const path = require("path");
 const fs = require("fs");
-const STATUS = {
-  "404": "Not Found",
-  "200": "OK",
-  "201": "Created"
-}
+const { yieldHTML } = require("./Renderer");
+const logger = require("./logger");
 
 function ROOT(route, to) {
   return GET(route, to);
 }
 
 function GET(route, to) {
-  const controller_name = to.split("#")[0] + "_controller.js";
-  const controller = require("../controllers/" + controller_name);
+  const cont = to.split("#")[0];
+  const controller_name = cont + "_controller.js";
+  const controller = require("../app/controllers/" + controller_name);
   const function_name = to.split("#")[1];
   const func = (new controller)[function_name];
 
   router.get(route, (req, res) => {
-    console.log("Started", route);
-    const file_exists = fs.existsSync(`./views/${function_name}.html`);
+    const request_time = new Date();
+    console.log("Started", `\"${route}\"`, "at", (new Date()).toLocaleString('en-AU'));
+    const file_exists = fs.existsSync(`./app/views/${cont}/${function_name}.html`);
     if(file_exists) {
-      console.log("Returned", 200, "OK")
-      res.status(200).render(`../views/${function_name}`, func())
+      res.status(200).render(`../app/views/${cont}/${function_name}`, func())
+      console.log("Rendered", `../app/views/${cont}/${function_name} at`, (new Date()).toLocaleString('en-AU'));
+      const render_time = new Date();
+      console.log("Completed", 200, "OK at", render_time.toLocaleString('en-AU'), "in", render_time.getTime() - request_time.getTime(), "ms");
     }
     else {
-      console.log("Returned", 200, "OK")
+      console.log("Completed", 404, "OK at", (new Date()).toLocaleString('en-AU'));
       res.status(404).render(`../public/404`)
     }
-    
   })
 }
 
