@@ -9,6 +9,8 @@ class Pages extends Controller {
   }
 
   about() {}
+
+  gunc() {}
 }
 
 module.exports = Pages;

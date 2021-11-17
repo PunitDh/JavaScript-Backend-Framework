@@ -6,6 +6,8 @@ function Routes() {
   ROOT("/", to="pages#index")
   
   GET("/about", "pages#about")
+
+  GET("/gunc", "pages#gunc")
 }
 
 module.exports = Routes;
